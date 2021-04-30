@@ -1,0 +1,43 @@
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.4rem;
+  background: hsl(173, 58%, 39%);
+  transition: background 0.25s;
+}
+
+.miss {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+
+.hit {
+  background: hsl(12, 76%, 61%);
+  transform: scale(0.9);
+}
+
+.target {
+  animation: pulse 0.5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: hsl(43, 74%, 66%);
+  }
+
+  100% {
+    background-color: hsl(27, 87%, 67%);
+    transform: scale(0.9);
+  }
+}
+
+/* .disabled,
+.disabled:hover {
+  opacity: 0.5;
+  background: none;
+  box-shadow: 0 0 0 1px hsl(197, 37%, 14%);
+  cursor: not-allowed;
+} */

@@ -1,0 +1,15 @@
+.board {
+  gap: 5px;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  display: grid;
+  align-items: center;
+  color: hsl(197, 37%, 14%);
+}
+
+.numbers {
+  text-align: right;
+}
+
+.letters {
+  text-align: center;
+}

@@ -1,0 +1,50 @@
+.enemy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.4rem;
+  color: hsl(197, 37%, 14%);
+  transition: background 0.25s;
+  background: hsla(197, 37%, 14%, 0.5);
+}
+
+.empty:not(.disabled):not(.target) {
+  /* opacity: 0.5; */
+  background: hsla(197, 37%, 14%);
+  animation: blink 0.75s ease-in-out infinite alternate-reverse;
+}
+
+.empty:hover:not(.disabled) {
+  background: hsl(27, 87%, 67%);
+  box-shadow: none;
+  opacity: 1;
+  animation: none;
+}
+
+.miss,
+.miss:hover {
+  opacity: 0.5;
+  /* background: hsla(197, 37%, 14%, 0.5); */
+  transform: scale(0.8);
+}
+
+.hit,
+.hit:hover {
+  background: hsl(12, 76%, 61%);
+  transform: scale(0.9);
+}
+
+.target {
+  background: hsl(43, 74%, 66%);
+}
+
+@keyframes blink {
+  0% {
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
