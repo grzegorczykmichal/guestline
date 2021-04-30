@@ -1,132 +1,124 @@
-import { useState, useRef, MouseEvent, useEffect } from "react";
-import { Square } from "./Square";
-import { Result } from "./Result";
+import React, { useEffect, useState } from "react";
+import {
+  Cell,
+  cell,
+  coords,
+  emptyBoard,
+  fire,
+  initialize,
+  next,
+  Turn,
+  update,
+} from "../lib";
 import "./App.css";
-import * as game from "../lib";
+import { EnemyBaord, PlayerBoard } from "./Board";
+import { Actions } from "./Actions";
+import { Button } from "./Button";
+import { Result } from "./Result";
 
 function App() {
-  // const [turn, setTurn] = useState(1);
-  // const [player, setPlayer] = useState(1);
-  // const [playerAim, setPlayerAim] = useState<number[]>([]);
+  const [turn, setTurn] = useState<Turn>(Turn.Player);
 
-  // const [board, setBaord] = useState(() => {
-  //   return game.initialize(game.emptyBoard());
-  // });
+  const [playerBoard, setPlayerBoard] = useState(() => {
+    return initialize(emptyBoard());
+  });
+  const [playerTarget, setPlayerTarget] = useState("");
 
-  // const [hitBoard, setHitBaord] = useState(() => {
-  //   const b = game.initialize(game.emptyBoard());
-  //   return b;
-  // });
+  const [enemyBoard, setEnemyBoard] = useState(() => {
+    return initialize(emptyBoard());
+  });
+  const [enemyTarget, setEnemyTarget] = useState("");
 
-  // function handleAim(row: number, col: number) {
-  //   setPlayerAim([row, col]);
-  // }
+  useEffect(() => {
+    if (turn === Turn.Player) {
+      return;
+    }
+    const nextCell = next(playerBoard);
+    setEnemyTarget(nextCell);
+  }, [playerBoard, turn]);
 
-  // function handleFire() {
-  //   if (player === 0 || playerAim.length === 0) {
-  //     return;
-  //   }
-  //   const [row, col] = playerAim;
-  //   const nextBoard = game.fire(hitBoard, game.cell(row, col));
-  //   setHitBaord(nextBoard);
-  //   setPlayer(0);
-  // }
+  function handlePlayAgain() {
+    setPlayerBoard(initialize(emptyBoard()));
+    setEnemyBoard(initialize(emptyBoard()));
+    setTurn(Turn.Player);
+  }
 
-  // function f() {
-  //   const nextBoard = game.aiFire(board);
-  //   setBaord(nextBoard);
-  //   setPlayer(1);
-  // }
+  function handleHit() {
+    update(enemyTarget, playerBoard);
+    const [row, column] = coords(enemyTarget! as Cell);
+    const nextBaord = fire(playerBoard, row, column);
+    setPlayerBoard(nextBaord);
+    setEnemyTarget("");
+    setTurn(Turn.Player);
+  }
 
-  // useEffect(() => {
-  //   if (player === 1) {
-  //     return;
-  //   }
-  //   f();
-  // }, [player]);
+  function handleMiss() {
+    const [row, column] = coords(enemyTarget! as Cell);
+    const nextBaord = fire(playerBoard, row, column);
+    setPlayerBoard(nextBaord);
+    setEnemyTarget("");
+    setTurn(Turn.Player);
+  }
 
-  // useEffect(() => {
-  //   if (turn === 1) {
-  //     return;
-  //   }
-  //   f();
-  // }, [turn]);
+  function handleDestroyed() {
+    update("", playerBoard);
+    const [row, column] = coords(enemyTarget! as Cell);
+    const nextBaord = fire(playerBoard, row, column);
+    setPlayerBoard(nextBaord);
+    setEnemyTarget("");
+    setTurn(Turn.Player);
+  }
 
-  // const isPlayerWinner = game.win(hitBoard);
-  // const isEmenyWinner = game.win(board);
+  function handleFire() {
+    const [row, column] = coords(playerTarget! as Cell);
+    const nextBoard = fire(enemyBoard, row, column);
+    setEnemyBoard(nextBoard);
+    setPlayerTarget("");
+    setTurn(Turn.Computer);
+  }
+
+  function handleSelectTerget(row: number, column: number) {
+    setPlayerTarget(cell(row, column));
+  }
 
   return (
     <>
-      {/* {(isPlayerWinner || isEmenyWinner) && (
-        <Result
-          win={isPlayerWinner}
-          onPlayAgain={() => {
-            setBaord(game.initialize(game.emptyBoard()));
-            setHitBaord(game.initialize(game.emptyBoard()));
-            setPlayer(1);
-          }}
-        />
-      )}
+      <Result
+        playerBoard={playerBoard}
+        enemyBord={enemyBoard}
+        onPlayAgain={handlePlayAgain}
+      />
       <div className="App">
         <div className="boards">
-          <div>
-            <div className="board">
-              {board.map((row, r) => {
-                return row.map((col, c) => {
-                  return (
-                    <Square
-                      type="visible"
-                      // markNext={nexts.includes(cell(r, c))}
-                      state={col}
-                      disabled={col === 4 || col === 3}
-                    />
-                  );
-                });
-              })}
-            </div>
-            <button
-              disabled={player !== 0}
-              onClick={() => {
-                setTurn((t) => t + 1);
-              }}
-            >
-              Turn
-            </button>
-          </div>
-          <div>
-            <div className="board board--hit">
-              {hitBoard.map((row, r) => {
-                return row.map((col, c) => (
-                  <Square
-                    type="hidden"
-                    onClick={() => handleAim(r, c)}
-                    markNext={
-                      playerAim.length === 2 &&
-                      playerAim[0] === r &&
-                      playerAim[1] === c
-                    }
-                    disabled={col === 4 || col === 3}
-                    state={col}
-                  />
-                ));
-              })}
-            </div>
-            <button disabled={player !== 1} onClick={handleFire}>
-              Fire
-            </button>
-          </div>
+          <PlayerBoard
+            board={playerBoard}
+            target={enemyTarget}
+            disabled={turn === Turn.Player}
+          />
+          <EnemyBaord
+            board={enemyBoard}
+            target={playerTarget}
+            disabled={turn === Turn.Computer}
+            onTargetSelected={handleSelectTerget}
+          />
         </div>
+        {turn === Turn.Computer && (
+          <Actions>
+            <Button onClick={handleMiss}>Miss</Button>
+            <Button onClick={handleHit}>Hit</Button>
+            <Button onClick={handleDestroyed}>Destroyed</Button>
+          </Actions>
+        )}
+        {turn === Turn.Player && (
+          <Actions>
+            {playerTarget ? (
+              <Button onClick={handleFire}>Fire</Button>
+            ) : (
+              "Select you target"
+            )}
+          </Actions>
+        )}
       </div>
-      <div className="debug">
-        {player === 1 ? "Your turn" : "Computer"}
-        <button
-          onClick={() => {
-            setTurn((t) => t + 1);
-          }}
-        >
-          Next turn ({turn})
-        </button>
-      </div> */}
     </>
   );
 }

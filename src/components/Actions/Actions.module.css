@@ -1,8 +1,12 @@
 .actions {
   margin: 2rem;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
   align-items: center;
   height: 100px;
+  width: 400px;
+  background: hsla(0, 0%, 100%, 1);
+  border-radius: 0.5rem;
 }

@@ -26,25 +26,6 @@ function EnemyBaord({
           !disabled && onTargetSelected(row, column);
         }}
       />
-      {/* {!disabled &&
-        (aim ? (
-          <Actions>
-            <Button
-              disabled={disabled}
-              onClick={() => {
-                if (aim) {
-                  const [row, column] = aim;
-                  onFireClick(row, column);
-                  setAim(undefined);
-                }
-              }}
-            >
-              Fire
-            </Button>
-          </Actions>
-        ) : (
-          <div className={styles.instruction}>Aim</div>
-        ))} */}
     </div>
   );
 }
