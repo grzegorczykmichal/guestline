@@ -1,3 +1,4 @@
+import React from "react";
 import style from "./Result.module.css";
 import { destroyed, Board } from "../../lib";
 

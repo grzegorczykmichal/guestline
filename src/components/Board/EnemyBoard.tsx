@@ -1,3 +1,4 @@
+import React from "react";
 import { Board } from "./Board";
 import styles from "./EnemyBoard.module.css";
 import { Cell, coords } from "../../lib";

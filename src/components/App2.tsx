@@ -1,3 +1,4 @@
+import React from "react";
 import { PlayerBoard, EnemyBaord } from "./Board";
 import { Result } from "./Result";
 import "./App.css";

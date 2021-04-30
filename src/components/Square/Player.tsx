@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Player.module.css";
 import { States } from "../../lib";
 import classnames from "classnames";

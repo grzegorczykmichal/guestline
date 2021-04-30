@@ -1,3 +1,4 @@
+import React from "react";
 import { Board } from "./Board";
 import { coords, Cell } from "../../lib";
 import styles from "./PlayerBoard.module.css";
