@@ -1,11 +1,10 @@
 import { copy, Board, States } from "./board";
-import { coords, Cell } from "./cell";
+import { coords } from "./cell";
 
 export enum Turn {
   Player = "Player",
   Computer = "Computer",
 }
-// export type Turn = "player" | "computer";
 
 export function evaluate(board: Board): number {
   return board.flat().filter((s) => s === States.Hit).length;

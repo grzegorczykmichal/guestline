@@ -36,7 +36,7 @@ function App2() {
     }
     const nextCell = next(playerBoard);
     setEnemyTarget(nextCell);
-  }, [turn]);
+  }, [playerBoard, turn]);
 
   function handlePlayAgain() {
     setPlayerBoard(initialize(emptyBoard()));
@@ -96,9 +96,6 @@ function App2() {
             board={playerBoard}
             target={enemyTarget}
             disabled={turn === Turn.Player}
-            onMissClick={handleMiss}
-            onHitClick={handleHit}
-            onDestroyClick={handleDestroyed}
           />
           <EnemyBaord
             board={enemyBoard}
