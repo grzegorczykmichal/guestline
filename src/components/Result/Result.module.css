@@ -26,20 +26,6 @@
   margin: 0;
 }
 
-.buttom {
-  padding: 1rem 1.5rem;
-  text-transform: uppercase;
-  background: hsl(197, 37%, 24%);
-  color: hsl(27, 87%, 67%);
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-}
-.buttom:hover {
-  cursor: pointer;
-  background: hsl(197, 37%, 14%);
-}
-
 @keyframes slidein {
   0% {
     opacity: 0;

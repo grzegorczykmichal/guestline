@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Result.module.css";
+import { Button } from "../Button";
 import { destroyed, Board } from "../../lib";
 
 function Result({
@@ -23,9 +24,9 @@ function Result({
       <div className={style.banner}>
         <h1 className={style.h1}>{playerWin ? "You won!" : "Game over"}</h1>
         <p>{playerWin ? "🏆" : "💀"}</p>
-        <button className={style.buttom} onClick={onPlayAgain}>
+        <Button version="secondary" onClick={onPlayAgain}>
           Play again
-        </button>
+        </Button>
       </div>
     </div>
   );

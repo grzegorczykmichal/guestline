@@ -1,16 +1,33 @@
 .button {
   padding: 0.75rem 1.5rem;
   border: none;
-  background: hsl(43, 74%, 66%);
-  color: hsl(197, 37%, 14%);
   border-radius: 0.25rem;
   font-weight: bold;
   cursor: pointer;
 }
 
-.button:hover {
+.primary:not(.disabled) {
+  background: hsl(43, 74%, 66%);
+  color: hsl(197, 37%, 14%);
+}
+.primary:not(.disabled):hover {
   background: hsl(43, 54%, 56%);
-  color: hsl(197, 57%, 14%);
+  box-shadow: 0 0 0 1px hsl(43, 54%, 56%);
+}
+.primary:not(.disabled):active {
+  box-shadow: none;
+}
+
+.secondary:not(.disabled) {
+  background: hsl(197, 37%, 24%);
+  color: hsl(27, 87%, 67%);
+}
+.secondary:not(.disabled):hover {
+  background: hsl(197, 37%, 14%);
+  box-shadow: 0 0 0 1px hsl(197, 37%, 14%);
+}
+.secondary:not(.disabled):active {
+  box-shadow: none;
 }
 
 .disabled,

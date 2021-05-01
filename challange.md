@@ -16,8 +16,7 @@ Try to code the challenge as you would approach any typical work task; we are no
 
 Please include a link to the source and instructions on how to build and run it and send your completed challenge to talent@guestline.com, there are no timescales here we appreciate you taking the time out to complete the activity.
 
-    A B C D E F G H I J
-
+A B C D E F G H I J
 1 · · · · · · · · · ·
 2 · · · · · · · · · ·
 3 · · · · · · · · · ·

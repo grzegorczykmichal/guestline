@@ -41,6 +41,8 @@ function App() {
     setPlayerBoard(initialize(emptyBoard()));
     setEnemyBoard(initialize(emptyBoard()));
     setTurn(Turn.Player);
+    setEnemyTarget("");
+    setPlayerTarget("");
   }
 
   function handleHit() {
@@ -118,6 +120,9 @@ function App() {
             )}
           </Actions>
         )}
+        <Button version="secondary" onClick={handlePlayAgain}>
+          New game
+        </Button>
       </div>
     </>
   );
