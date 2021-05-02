@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+# The Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Prerequisites
 
-## Available Scripts
+1.  Ensure you have `node` installed
 
-In the project directory, you can run:
+### Setup
 
-### `yarn start`
+1. Clone this repository.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+git clone git@github.com:grzegorczykmichal/guestline.git
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. Go to project directory and run:
 
-### `yarn test`
+```bash
+yarn i
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Run/Build/Test
 
-### `yarn build`
+##### To run the project:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##### To bild the project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+yarn build
+```
 
-### `yarn eject`
+After the command is done you should see a /dist folder with files redy to be deployed.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### Run tests:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+yarn test
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Challenge description
 
-## Learn More
+The challenge is to program a simple version of the game Battleships (video). Create an application to allow a single human player to play a one-sided game of Battleships against ships placed by the computer.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The program should create a 10x10 grid, and place several ships on the grid at random with the following sizes:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1x Battleship (5 squares)
+
+2x Destroyers (4 squares)
+
+The player enters or selects coordinates of the form “A5”, where “A” is the column and “5” is the row, to specify a square to target. Shots result in hits, misses or sinks. The game ends when all ships are sunk.
+
+You can write a console application or UI to complete the task.
+
+Try to code the challenge as you would approach any typical work task; we are not looking for you to show knowledge of frameworks or unusual programming language features. Most importantly, keep it simple.
+
+Please include a link to the source and instructions on how to build and run it and send your completed challenge to talent@guestline.com, there are no timescales here we appreciate you taking the time out to complete the activity.
