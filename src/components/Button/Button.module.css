@@ -19,12 +19,12 @@
 }
 
 .secondary:not(.disabled) {
-  background: hsl(197, 37%, 24%);
+  background: hsl(197, 37%, 14%);
   color: hsl(27, 87%, 67%);
 }
 .secondary:not(.disabled):hover {
-  background: hsl(197, 37%, 14%);
-  box-shadow: 0 0 0 1px hsl(197, 37%, 14%);
+  background: hsl(197, 37%, 10%);
+  box-shadow: 0 0 0 1px hsl(197, 37%, 10%);
 }
 .secondary:not(.disabled):active {
   box-shadow: none;

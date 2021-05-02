@@ -31,7 +31,7 @@ function Enemy({
       }
       className={className}
     >
-      {state === States.Hit ? "🔥" : target ? "💣" : state}
+      {state === States.Hit ? "🔥" : target ? "💣" : ""}
     </div>
   );
 }

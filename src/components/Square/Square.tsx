@@ -2,7 +2,7 @@ import React from "react";
 import { Enemy } from "./Enemy";
 import { Player } from "./Player";
 
-export type Type = "hidden" | "visible";
+export type Type = "disguised" | "visible";
 
 function Square({
   type = "visible",
@@ -15,7 +15,7 @@ function Square({
   pulse?: boolean;
   onClick?: () => void;
 }) {
-  if (type === "hidden") {
+  if (type === "disguised") {
     return <Enemy {...props} />;
   }
   if (type === "visible") {

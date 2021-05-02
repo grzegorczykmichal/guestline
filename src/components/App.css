@@ -1,6 +1,6 @@
 .App {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,22 +11,5 @@
 
 .boards {
   display: flex;
-  gap: 4rem;
-}
-
-.board {
-  gap: 5px;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-  display: grid;
-}
-
-.debug {
-  position: fixed;
-  bottom: 1rem;
-  top: 1rem;
-  left: 1rem;
-  width: 250px;
-  background: #fefefe;
-  display: flex;
-  flex-direction: column;
+  gap: 3rem;
 }
